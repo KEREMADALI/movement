@@ -55,16 +55,19 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Extensions\Vector3Extensions.cs" />
-    <Compile Include="Assets\Scripts\Extensions\QuaternionExtension.cs" />
-    <Compile Include="Assets\Scripts\Extensions\TransformExtensions.cs" />
-    <Compile Include="Assets\Scripts\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Movement\IMovementController.cs" />
     <Compile Include="Assets\Scripts\Movement\NavMeshController.cs" />
-    <Compile Include="Assets\Scripts\TeleportManager.cs" />
-    <Compile Include="Assets\Scripts\States\IState.cs" />
     <Compile Include="Assets\Scripts\States\ChaseState.cs" />
-    <Compile Include="Assets\Scripts\States\InitialState.cs" />
+    <Compile Include="Assets\Scripts\States\IState.cs" />
+    <Compile Include="Assets\Scripts\Extensions\Vector3Extensions.cs" />
+    <Compile Include="Assets\Scripts\TeleportManager.cs" />
+    <Compile Include="Assets\Scripts\CharacterManager.cs" />
+    <Compile Include="Assets\Scripts\States\AbstractState.cs" />
+    <Compile Include="Assets\Scripts\Extensions\QuaternionExtension.cs" />
+    <Compile Include="Assets\Scripts\Extensions\TransformExtensions.cs" />
+    <Compile Include="Assets\Scripts\AI\IStateController.cs" />
+    <Compile Include="Assets\Scripts\AI\SimpleAI.cs" />
+    <Compile Include="Assets\Scripts\States\IdleState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.States
 {
-    public class ChaseState : AbstractState
+    public class IdleState : AbstractState
     {
         #region Private & Const Variables
 
@@ -14,7 +14,7 @@ namespace Assets.Scripts.States
 
         #region Constructors
 
-        public ChaseState(IStateController stateController) 
+        public IdleState(IStateController stateController) 
             : base(stateController) 
         { 
         }
@@ -29,7 +29,7 @@ namespace Assets.Scripts.States
 
         public override IState DoAction()
         {
-            m_MovementController.Move(m_Target.transform.position);
+            m_MovementController.Stop();
 
             return GetNextState();
         }

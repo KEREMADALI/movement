@@ -1,24 +1,22 @@
-﻿using Assets.Scripts.Movement;
+﻿using Assets.Scripts.AI;
+using Assets.Scripts.Movement;
 using Assets.Scripts.States;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
     #region Private & Const Variables
 
-    private IMovementController m_MovementController;
-    
     [SerializeField]
     private GameObject m_Target;
     private IState m_CurrentState;
-
+    
     #endregion
 
     #region Public & Protected Variables
 
+    public IStateController SimpleAI;
+    public IMovementController MovementController;
 
     #endregion
 
@@ -30,18 +28,20 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
-        m_MovementController = new NavMeshController(gameObject);
-        m_CurrentState = new InitialState(m_Target, m_MovementController);
+        // Change controller according to will
+        MovementController = new NavMeshController(gameObject);
+
+        // Change controller according to will
+        SimpleAI = new SimpleAI(transform, m_Target, MovementController);
+        m_CurrentState = new IdleState(SimpleAI);
     }
 
     private void Update()
     {
         if (m_Target == null)
         {
-            throw new System.Exception("Target can not be null in ChracterManager");
+            throw new System.Exception("Target can not be null in CharacterManager");
         }
-
-        m_MovementController.Move(m_Target.transform.position);
 
         m_CurrentState = m_CurrentState.DoAction();
     }
